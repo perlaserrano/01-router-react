@@ -1,18 +1,18 @@
 import React from 'react'
 import { useContext } from 'react'
-import { NavLink, useHistory } from 'react-router-dom/cjs/react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../contex/AuthContex'
 import { authTypes } from '../types/authTypes'
 
 const Navbar = () => {
-const history = useHistory()
+const navigate = useNavigate()
 
  const {dispatch} =  useContext(AuthContext)
 
 const handleLogout = () => {
 dispatch({type: authTypes.logout })
 
-history.replace("/login")
+navigate("/login")
 
 }
 
@@ -26,13 +26,13 @@ history.replace("/login")
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="nav-item">
-            <NavLink activeClassName="active text-white"me to="/man" className="nav-link active" aria-current="page" href="#">Man</NavLink>
+            <NavLink to="/man" className={({isActive}) => `nav-link${isActive ? 'active text-white' : ''}`} aria-current="page" href="#">Man</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink activeClassName="active text-white" to="/woman" className="nav-link" href="#">Woman</NavLink>
+            <NavLink  to="/woman" className={({isActive}) => `nav-link${isActive ? 'active text-white' : ''}`}  href="#">Woman</NavLink>
           </li>
           <li className="nav-item">
-            <NavLink  activeClassName="active text-white" to="/search" className="nav-link" href="#">Search</NavLink>
+            <NavLink  to="/search" className={({isActive}) => `nav-link${isActive ? 'active text-white' : ''}`}  href="#">Search</NavLink>
           </li>
           
         </ul>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Switch, Route , Redirect } from 'react-router-dom'
+import { Route , Routes, Navigate } from 'react-router-dom'
 import ManScreen from '../pages/ManScreen'
 import WomanScreen from '../pages/WomanScreen'
 import SearchScreen from '../pages/SearchScreen'
@@ -10,14 +10,15 @@ const AppRouter = () => {
   return (
     <>
     <Navbar/>
-    <Switch>
-        <Route exact path="/man" component={ManScreen}/>
-        <Route exact path="/woman" component={WomanScreen}/>
-        <Route exact path="/search" component={SearchScreen}/>
-        <Route exact path="/character/:id" component={CharacterScreen}/>
-
-        <Redirect to="/man"/>
-    </Switch>
+    <Routes>
+        <Route end path="/man" element={<ManScreen/>}/>
+        <Route end path="/woman" element={<WomanScreen/>}/>
+        <Route end path="/search" element={<SearchScreen/>}/>
+        <Route end path="/character/:id" element={<CharacterScreen/>}/>
+           
+         <Route path='*' element={<Navigate to="/man"/>}/>  
+        
+    </Routes>
       
     </>
   )

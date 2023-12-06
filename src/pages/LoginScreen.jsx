@@ -2,15 +2,15 @@ import React from 'react'
 import { useContext } from 'react'
 import { AuthContext } from '../contex/AuthContex'
 import {authTypes} from '../types/authTypes'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const LoginScreen = () => {
 const {dispatch} = useContext(AuthContext)
-const history = useHistory()
+const navigate = useNavigate()
   const handleLogin = () => {
   dispatch({type: authTypes.login})
 
-  history.push("/")
+  navigate("/login")
   
   }
   return (
